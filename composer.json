@@ -1,0 +1,85 @@
+{
+  "name": "alfasix/alfakit-media-library",
+  "description": "Spatie Laravel Media Library fields, columns and entries for AlfaKit panels.",
+  "keywords": [
+    "laravel",
+    "alfakit",
+    "media-library",
+    "spatie",
+    "file-upload"
+  ],
+  "homepage": "https://alfakit.dev/docs/plugins/media-library",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Alfa Six",
+      "homepage": "https://alfasixbh.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/alfasixbh/alfakit/issues",
+    "source": "https://github.com/alfasixbh/alfakit/tree/main/packages/plugins/media-library"
+  },
+  "require": {
+    "php": "^8.3",
+    "alfasix/alfakit": "^0.1|@dev",
+    "spatie/laravel-medialibrary": "^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AlfaSix\\AlfakitMediaLibrary\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AlfaSix\\AlfakitMediaLibrary\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AlfaSix\\AlfakitMediaLibrary\\AlfakitMediaLibraryServiceProvider"
+      ]
+    },
+    "alfakit": {
+      "version": "^0.1",
+      "frontend": null,
+      "showcase": {
+        "demoPath": "products/3/edit",
+        "tour": [
+          "Open a product",
+          "Upload images to the gallery",
+          "Reorder the images"
+        ],
+        "clips": [
+          "react-light",
+          "react-dark",
+          "vue-light",
+          "vue-dark",
+          "svelte-light",
+          "svelte-dark"
+        ],
+        "worksWith": [
+          "file-manager",
+          "cms",
+          "tags"
+        ],
+        "highlights": [
+          "Upload field backed by media collections",
+          "Conversions and responsive images",
+          "Custom properties",
+          "Ordering",
+          "Private disks",
+          "Image column and entry"
+        ]
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
