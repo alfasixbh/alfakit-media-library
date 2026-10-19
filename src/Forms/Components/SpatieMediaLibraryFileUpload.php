@@ -257,9 +257,23 @@ class SpatieMediaLibraryFileUpload extends FileUpload
         return array_values(array_unique([...$this->hydratedFiles, ...array_keys($this->getRecordMediaByUuid())]));
     }
 
+    /**
+     * The names the field lists: the media `name` (the original file name unless
+     * `mediaName()` changed it) with the file's extension. `file_name` is the stored name,
+     * random unless `preserveFilenames()`.
+     */
     public function getStoredFileNames(): array
     {
-        return array_map(static fn (Media $media): string => (string) $media->file_name, $this->getRecordMediaByUuid());
+        return array_map(static function (Media $media): string {
+            $name = trim((string) $media->name);
+            $extension = pathinfo((string) $media->file_name, PATHINFO_EXTENSION);
+
+            if ($name === '') {
+                return (string) $media->file_name;
+            }
+
+            return $extension === '' || str_ends_with(strtolower($name), '.'.strtolower($extension)) ? $name : "{$name}.{$extension}";
+        }, $this->getRecordMediaByUuid());
     }
 
     protected function getStoredFileInformation(string $path): array

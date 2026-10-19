@@ -64,6 +64,13 @@ it('adds uploads to the media collections when a record is created', function ()
         ->and($gallery->pluck('name')->all())->toBe(['Gallery first', 'Gallery second'])
         ->and($gallery->first()?->getCustomProperty('source'))->toBe('panel')
         ->and($gallery->first()?->disk)->toBe('public');
+
+    // Listed by the original name, not the random stored file name.
+    $cover = $album->getFirstMedia('cover');
+    $field = mlComponent(mlTest()->pageProps("/media/albums/{$album->id}/edit")['content'][0], 'cover');
+
+    expect($cover?->file_name)->not->toBe('cover.png')
+        ->and(array_column($field['files'], 'name'))->toBe(['cover.png']);
 });
 
 it('fills the field with the media and serialises it as a file upload', function (): void {
