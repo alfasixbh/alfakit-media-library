@@ -23,7 +23,7 @@
     "source": "https://github.com/alfasixbh/alfakit/tree/main/packages/plugins/media-library"
   },
   "require": {
-    "php": "^8.3",
+    "php": "^8.4",
     "alfasix/alfakit": "^0.1|@dev",
     "spatie/laravel-medialibrary": "^11.0"
   },
