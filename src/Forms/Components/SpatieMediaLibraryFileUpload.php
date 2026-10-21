@@ -380,7 +380,7 @@ class SpatieMediaLibraryFileUpload extends FileUpload
         try {
             $adder = $record
                 ->addMediaFromDisk($upload->path(), (string) config('alfakit.uploads.temporary_disk', config('filesystems.default')))
-                ->usingFileName($this->resolveStoredFileName($originalName, $this->getUploadExtension($upload)))
+                ->usingFileName($this->resolveStoredFileName($originalName, $this->getUploadExtension($upload), $upload))
                 ->usingName((string) ($this->evaluate($this->mediaName, $arguments) ?? pathinfo($originalName, PATHINFO_FILENAME)));
 
             if (is_array($properties = $this->evaluate($this->customProperties, $arguments))) {
